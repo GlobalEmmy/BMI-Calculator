@@ -16,12 +16,12 @@ body {
 @media (max-width: 375px) {
     .container {
         width: 80%;
-        height: 80vh;
+        height: 60vh;
     }
 }
 @media (max-width: 420px) {
    .container {
        width: 80%;
-       height: 85vh;
+       height: 60vh;
    }
 }
