@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const ejs = require("ejs");
 const port = process.env.PORT || 3000;
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static("public"))
+app.use(express.static("public"));
+app.set("view engine", "ejs");
 
 
 app.get("/", (req, res) => {
@@ -15,13 +17,16 @@ app.post("/", (req, res) => {
     let height = parseFloat(req.body.height)
     let bmi = Math.round(weight/(Math.pow(height, 2)))
     if (bmi < 18.5){
-         res.send( `<h1>Your bmi is: ${bmi}. You are underweight.</h1>`);
-    }else if(bmi >= 18.5 && bmi <= 24.5 ){
-         res.send(`<h1>Your bmi is: ${bmi}. You are within the normal weight range.</h1>`);
+         res.render("Underweight", {BMI: bmi})
+    }else if(bmi >= 18.5 && bmi <= 24.9 ){
+         res.render("Normal", {BMI: bmi})
     } else if(bmi >= 25 && bmi <= 29.9){
-         res.send(`<h1>Your bmi is: ${bmi}. You are within the overweight range.</h1>`);
-    }else{
-         res.send(`<h1>Your bmi is: ${bmi}. You are within the obese range.</h1>`);
+         res.render("Overweight", {BMI: bmi})
+    } else if (bmi > 30) {
+     res.render("Obese", {BMI: bmi})
+
+    } else{
+         res.render("Error")
 
     };  
 })

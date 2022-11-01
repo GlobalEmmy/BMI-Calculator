@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&display=swap");
+body {
+    background: #F5EFE6;
+}
+.container {
+    width: 50%;
+    margin: auto;
+    background: #E8DFCA;
+    color: #7895B2;
+    padding: 15px;
+    height: 50vh;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 50px;
+}
